@@ -88,7 +88,11 @@
             <button mat-button [matMenuTriggerFor]="menu"><mat-icon>list </mat-icon></button>
 <mat-menu #menu="matMenu">
   <button (click)="profile()" mat-menu-item><mat-icon>face</mat-icon>{{user.nom}}</button>
+  <button (click)="message()" mat-menu-item>
+    <mat-icon>mail</mat-icon>messages
+</button>
   <button (click)="logOut()" mat-menu-item><mat-icon>input</mat-icon>log out</button>
+ 
 </mat-menu>
 
 

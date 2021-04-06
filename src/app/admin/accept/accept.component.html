@@ -1,0 +1,26 @@
+<div style="min-height:750px;" class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>email</th>
+                <th>Role</th>
+                <th> accepted</th>
+                <th class="text-right">accepter</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of users ;let index=index;">
+            <tr *ngIf="item.role=='owner'">
+                <td>{{item.nom}}</td>
+                <td>{{item.prenom}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.role}}</td>
+
+                <td>{{item.accepted}}</td>
+                <td class="text-right"><button (click)="activer(index)">activer</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

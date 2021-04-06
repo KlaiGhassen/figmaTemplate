@@ -14,15 +14,22 @@ export class AuthServicee {
   constructor(private http: HttpClient, private gs: GlobalService) {
 
   }
+  getAlluser() {
+    return this.http.get<any>(`${this.gs.uri}/users`)
+  }
+  getallUsers() {
+    return this.http.get<any>(`${this.gs.uri}/users`);
 
-socialLog(data:any){
-  return this.http.post<any>(`${this.gs.uri}/auth/socauth`, {
-    nom:data.nom,
-    email:data.email,
-prenom:data.prenom,
-image:data.image,
-  });
-}
+  }
+
+  socialLog(data: any) {
+    return this.http.post<any>(`${this.gs.uri}/auth/socauth`, {
+      nom: data.nom,
+      email: data.email,
+      prenom: data.prenom,
+      image: data.image,
+    });
+  }
   logging(email: any, password: any) {
     let hash = this.gs.hashPassword(password);
     return this.http.post<any>(`${this.gs.uri}/auth`, {
@@ -34,22 +41,25 @@ image:data.image,
     return this.http.get<any>(`${this.gs.uri}/users/${id}`);
 
   }
-  downloadMedia(fileName  : any): Observable<Blob> {
+  downloadMedia(fileName: any): Observable<Blob> {
     return this.http.get(
       ` ${this.gs.uri}/profile/download/` + fileName,
-        {
-            responseType: "blob",
-        }
+      {
+        responseType: "blob",
+      }
     );
-}
+  }
   registerUser(data: any) {
-    return this.http.post<any>(`${this.gs.uri}/users`, {
-      nom: data.username,
-      prenom: data.lastname,
-      email: data.email,
-      role: 'user',
-      password: this.gs.hashPassword(data.password),
-    });
+      return this.http.post<any>(`${this.gs.uri}/users`, {
+        nom: data.nom,
+        prenom: data.prenom,
+        email: data.email,
+        role: data.role,
+        password: this.gs.hashPassword(data.password),
+        accepted: false,
+      });
+
+
   }
   resetEmail(email: any) {
     return this.http.post<any>(`${this.gs.uri}/auth/reset`, {
@@ -57,21 +67,22 @@ image:data.image,
     });
 
   }
-  updateProfile(id:any,data:any){
+  updateProfile(id: any, data: any) {
     return this.http.patch<any>(`${this.gs.uri}/profile/${id}`, {
-      nom:data.nom,
-    email:data.email,
-prenom:data.prenom,
-password:data.password,
-image:data.image,
-     })
-      
+      nom: data.nom,
+      email: data.email,
+      prenom: data.prenom,
+      password: data.password,
+      image: data.image,
+      accepted: data.accepted
+    })
+
   }
+
   verificationAcccount(id: any, data: any) {
     return this.http.patch<any>(`${this.gs.uri}/users/${id}`, {
       code: data.code
     })
-   
 
 
   }
@@ -92,7 +103,7 @@ image:data.image,
     return this.http.post<any>(
       'http://localhost:3000/profile/file',
       formData,
-     
+
     );
   }
 

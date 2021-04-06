@@ -121,7 +121,6 @@ login(){
        console.log('id',res);
      
      this.user=res;
-     this.ngOnInit();
      })
     })
   }else{
@@ -147,6 +146,7 @@ login(){
    })
   }
 
+  this.ngOnInit();
 
 }
 }

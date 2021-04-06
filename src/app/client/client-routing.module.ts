@@ -5,6 +5,7 @@ import {ApresHomePageComponent} from './apres-home-page/apres-home-page.componen
 import {DashboardClientComponent} from './dashboard-client/dashboard-client.component'
 import { HomeClientComponent } from './home-client/home-client.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,10 @@ component:   ProfileComponent
     path: 'dashboard',
     component: DashboardClientComponent
   },
+  {path:'messages',
+  component: MessagerieComponent
+
+  }
 
 ];
 

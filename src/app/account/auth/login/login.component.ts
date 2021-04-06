@@ -131,16 +131,19 @@ export class LoginComponent implements OnInit {
             "il y a un problème sur le serveur lors de la tentative de connexion";
           this.setErrorTimer();
         } else if (res.token && res.user) {
-          this.gs.saveToken(res.token);
-          this.gs.setUser(res.user);
+         
           if(res.user.role=='user'){
+            this.gs.saveToken(res.token);
+            this.gs.setUser(res.user);
           this.router.navigate(["/home"]);
         }else if(res.user.role=='admin'){
+          this.gs.saveToken(res.token);
+          this.gs.setUser(res.user);
+          this.router.navigate(["/admin"]);
+        }else if(res.user.role=="owner"&&res.user.accepted==true){
+          this.gs.saveToken(res.token);
+          this.gs.setUser(res.user);
           this.router.navigate(["/dashboard"]);
-
-        }else{
-          this.router.navigate(["/dashboard"]);
-
         }
         }}
         else{

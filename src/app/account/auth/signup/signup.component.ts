@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  isemail=false;
+  isemail = false;
 
   registerForm: FormGroup
 
@@ -42,6 +42,9 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ]),
+      role: new FormControl('user', [
+        Validators.required,
+      ]),
 
     }
 
@@ -52,7 +55,7 @@ export class SignupComponent implements OnInit {
   get email() { return this.registerForm.get('email') }
   get password() { return this.registerForm.get('password') }
   get lastname() { return this.registerForm.get('lastname') }
-
+  get role() { return this.registerForm.get('role') }
   ngOnInit(): void {
 
 
@@ -60,23 +63,28 @@ export class SignupComponent implements OnInit {
 
   register() {
 
-    let data = this.registerForm.value;
-    let user = new User(data.email, data.password);
-    if(this.registerForm.valid){
-    
-     this.userService.registerUser(data).subscribe((res)=>{
-      console.log(res);
-       if(res.user.isemail){
-        this.isemail=true;
-
-      }
-       else{
-      this.toastr.success(res.message);
-        this.router.navigate(['/code-verification/'+res.user._id]);
-      }
-     });
+    let data = {
+      nom: this.registerForm.controls["username"].value,
+      prenom: this.registerForm.controls["lastname"].value,
+      email: this.registerForm.controls["email"].value,
+      password: this.registerForm.controls["password"].value,
+      role: this.registerForm.controls["role"].value
     }
-    
+    if (this.registerForm.valid) {
+
+      this.userService.registerUser(data).subscribe((res) => {
+        console.log(res);
+        if (res.user.isemail) {
+          this.isemail = true;
+
+        }
+        else {
+          this.toastr.success(res.message);
+          this.router.navigate(['/code-verification/' + res.user._id]);
+        }
+      });
+    }
+
 
   }
 

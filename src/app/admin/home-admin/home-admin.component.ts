@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-admin.component.scss']
 })
 export class HomeAdminComponent implements OnInit {
+  value:any=false;
 
   constructor() { }
-
   ngOnInit(): void {
   }
+  changeValueToFalse(){
+this.value=false;
+
+  }
+  changeValueToTrue(){
+    this.value=true;
+    
+      }
 
 }

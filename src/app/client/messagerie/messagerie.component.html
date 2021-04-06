@@ -1,0 +1,87 @@
+<div class="background_advantages">
+
+    <div class="navbarx navbar-default" id="navbarx">
+        <app-only-nav></app-only-nav>
+        <div class="container clearfix">
+            <div class="people-list" id="people-list">
+               
+                <ul class="list" *ngIf="users">
+                    <li class="clearfix" *ngFor="let user of users; let index=index;">
+                       <div *ngIf="user.role!='admin'">
+                        <a (click)="behaviour(index)">
+                            <img class="img" [src]="user.image" alt="avatar" />
+                            <div class="about">
+                                <div class="name">{{user.nom}} {{user.prenom}}</div>
+                                <div class="status">
+                                    <i class="fa fa-circle online"></i> contact
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="chat">
+                <div class="chat-header clearfix">
+                    <img style="width: 55px; height: 55px; border-radius: 50%;" [src]="users[index].image"
+                        alt="avatar" />
+                    <div class="chat-about">
+                        <div class="chat-with">Chat with {{users[index].nom}} {{users[index].prenom}}</div>
+                        <div class="chat-num-messages">{{users[index].role}}</div>
+                    </div>
+                    <i class="fa fa-star"></i>
+                </div> <!-- end chat-header -->
+
+                <div class="chat-history">
+                    <ul *ngIf="allmessages">
+                        <div *ngFor="let item of allmessages">
+                            <li class="clearfix" *ngIf="item.toSend==users[index]._id && item.whoSend==user._id ">
+                                <div class="message-data align-right">
+                                    <span class="message-data-time">{{item.creted_at | date:'yyyy-MM-dd | hh:mm:ss'}}</span> &nbsp; &nbsp;
+                                    <span class="message-data-name">{{user.nom}} {{user.prenom}}</span> <i
+                                        class="fa fa-circle me"></i>
+
+                                </div>
+                                <div class="message other-message float-right">
+                                    {{item.content}}
+                                </div>
+                            </li>
+                            <li *ngIf="item.whoSend==users[index]._id && item.toSend==user._id ">
+                                <div class="message-data"  >
+                                    <span class="message-data-name"><i class="fa fa-circle online"></i>
+                                      
+
+                                        {{users[index].nom}}
+                                        {{users[index].prenom}}</span>
+                                    <span class="message-data-time">{{item.creted_at | date:'yyyy-MM-dd | hh:mm:ss'}}</span>
+                                </div>
+                                <div class="message my-message">
+                                    {{item.content}}
+                                </div>
+                            </li>
+                        </div>
+
+
+
+
+                    </ul>
+
+                </div> <!-- end chat-history -->
+
+                <div class="chat-message clearfix">
+                    <textarea name="message-to-send" id="message-to-send" placeholder="Type your message"
+                        [(ngModel)]="msg" rows="3"></textarea>
+
+                    <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-file-image-o"></i>
+
+                    <button (click)="send()">Send</button>
+
+                </div> <!-- end chat-message -->
+
+            </div> <!-- end chat -->
+
+        </div> <!-- end container -->
+    </div>
+</div>

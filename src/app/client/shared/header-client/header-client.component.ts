@@ -8,23 +8,28 @@ import { GlobalService } from 'src/app/global.service';
   styleUrls: ['./header-client.component.scss']
 })
 export class HeaderClientComponent implements OnInit {
-user:any;
-  constructor(    private router: Router,
+  user: any;
+  constructor(private router: Router,
     private gs: GlobalService,
 
-    ) { 
+  ) {
 
-    }
+  }
 
   ngOnInit(): void {
-    this.user=this.gs.getUser();
+    this.user = this.gs.getUser();
   }
-  logOut(){
+  logOut() {
     this.gs.logOut()
     this.router.navigate(['']);
-    }
-  profile(){
+  }
+  profile() {
     this.router.navigate(['/profile/']);
+
+  }
+  message() {
+    this.router.navigate(['/messages']);
+
 
   }
 }

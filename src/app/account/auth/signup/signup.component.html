@@ -42,12 +42,13 @@
                         <input type="text" formControlName="username" class="form-control" id="username"
                           placeholder="Enter username">
 
-                     
+
                       </div>
                       <div *ngIf="username?.touched && username?.invalid">
                         <small *ngIf="username?.errors?.required" class="text-danger">Firstname is required<br></small>
                         <small *ngIf="username?.errors?.pattern" class="text-danger">Invalid Firstname<br></small>
-                        <small *ngIf="username?.errors?.minlength" class="text-danger">Firstname must contain two characters at least</small>
+                        <small *ngIf="username?.errors?.minlength" class="text-danger">Firstname must contain two
+                          characters at least</small>
                       </div>
 
 
@@ -62,13 +63,14 @@
                         <label for="lastname">Lastname</label>
                         <input type="text" formControlName="lastname" class="form-control" id="lastname"
                           placeholder="Enter Lastname">
-                        </div>
-                        <div *ngIf="lastname?.touched && lastname?.invalid">
-                          <small *ngIf="lastname?.errors?.required" class="text-danger">Lastname is required<br></small>
-                          <small *ngIf="lastname?.errors?.pattern" class="text-danger">Invalid Lastname<br></small>
-                          <small *ngIf="lastname?.errors?.minlength" class="text-danger">Lastname must contain two characters at least</small>
-                        </div>
-                      
+                      </div>
+                      <div *ngIf="lastname?.touched && lastname?.invalid">
+                        <small *ngIf="lastname?.errors?.required" class="text-danger">Lastname is required<br></small>
+                        <small *ngIf="lastname?.errors?.pattern" class="text-danger">Invalid Lastname<br></small>
+                        <small *ngIf="lastname?.errors?.minlength" class="text-danger">Lastname must contain two
+                          characters at least</small>
+                      </div>
+
                       <div class="form-group auth-form-group-custom ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" fill="currentColor"
                           class="bi bi-envelope-fill auti-custom-input-icon " viewBox="0 0 16 16">
@@ -77,15 +79,15 @@
                         </svg>
                         <label for="email">Email</label>
                         <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-                        
+
                       </div>
-                      
-                      <div  *ngIf="email?.touched && email?.invalid">
+
+                      <div *ngIf="email?.touched && email?.invalid">
                         <div *ngIf="email?.errors?.required" class="text-danger">Email is required</div>
                         <div *ngIf="email?.errors?.email" class="text-danger">Email must be a valid email address</div>
-                      
+
                       </div>
-                      <div *ngIf="isemail"class="text-danger">Email should be unique</div>
+                      <div *ngIf="isemail" class="text-danger">Email should be unique</div>
                       <div class="form-group auth-form-group-custom">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor"
                           class="bi bi-lock auti-custom-input-icon" viewBox="0 0 16 16">
@@ -95,13 +97,26 @@
                         <label for="password">Password</label>
                         <input type="password" formControlName="password" class="form-control" id="password"
                           placeholder="Password">
-                        
-                      </div>
-                      <div   *ngIf="password?.touched && password?.invalid" >
-                        <div *ngIf="password?.errors?.required" class="text-danger"  >Password is required</div>
-                      </div>
 
-                      <div  class="text-center">
+                      </div>
+                      <div *ngIf="password?.touched && password?.invalid">
+                        <div *ngIf="password?.errors?.required" class="text-danger">Password is required</div>
+                      </div>
+                      <div class="form-group auth-form-group-custom mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" fill="currentColor"
+                          class="bi bi-person auti-custom-input-icon" viewBox="0 0 16 16">
+                          <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        </svg>
+
+                        <label for="role">Role</label>
+                        <select  formControlName="role" class="form-control" id="role"
+                          >
+                        <option selected value="user">user</option>
+                        <option value="owner">owner</option>
+                        </select>
+                      </div>
+                      <div class="text-center">
                         <button class="btn btn-primary w-md waves-effect waves-light" type="submit">
                           Register </button>
                       </div>
