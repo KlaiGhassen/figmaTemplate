@@ -6,6 +6,7 @@ import {DashboardClientComponent} from './dashboard-client/dashboard-client.comp
 import { HomeClientComponent } from './home-client/home-client.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,10 @@ const routes: Routes = [
 {    path: 'profile',
 component:   ProfileComponent
 
+},{
+
+  path: 'loginadmin',
+  component: LoginComponent
 },
 
   {

@@ -15,10 +15,11 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { OnlyNavComponent } from './only-nav/only-nav.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
-  declarations: [HomeClientComponent, PageHomeProjectComponent, ApresHomePageComponent, DashboardClientComponent, ProfileComponent, MessagerieComponent, OnlyNavComponent],
+  declarations: [HomeClientComponent, PageHomeProjectComponent, ApresHomePageComponent, DashboardClientComponent, ProfileComponent, LoginComponent,MessagerieComponent, OnlyNavComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

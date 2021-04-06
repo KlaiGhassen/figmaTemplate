@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { User } from './../../../entities/user';
-import { AuthServicee } from './../../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { GlobalService } from './../../../global.service';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { GlobalService } from 'src/app/global.service';
+import { AuthServicee } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -65,7 +64,7 @@ export class LoginComponent implements OnInit {
 
           this.gs.saveToken(res.token);
           this.gs.setUser(res.user);
-          this.router.navigate(["/dashboard"]);
+          this.router.navigate(["/home"]);
        }
        })
     });
@@ -91,7 +90,7 @@ export class LoginComponent implements OnInit {
 
           this.gs.saveToken(res.token);
           this.gs.setUser(res.user);
-          this.router.navigate(["/dashboard"]);
+          this.router.navigate(["/home"]);
        }
        })
     });

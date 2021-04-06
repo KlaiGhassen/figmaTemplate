@@ -6,9 +6,9 @@
             <div class="people-list" id="people-list">
                
                 <ul class="list" *ngIf="users">
-                    <li class="clearfix" *ngFor="let user of users; let index=index;">
-                       <div *ngIf="user.role!='admin'">
-                        <a (click)="behaviour(index)">
+                    <li style="background-color: aliceblue; border-radius: 2%;padding:8px; margin: 6px;" class="clearfix" *ngFor="let user of users; let index=index;">
+                       <div  *ngIf="user.role!='admin'">
+                        <a   (click)="behaviour(index)">
                             <img class="img" [src]="user.image" alt="avatar" />
                             <div class="about">
                                 <div class="name">{{user.nom}} {{user.prenom}}</div>

@@ -121,6 +121,17 @@ login(){
        console.log('id',res);
      
      this.user=res;
+     if(this.user.image){
+      this.userService
+      .downloadMedia(this.user.image)
+      .subscribe((blob) => {
+          var myFile = blobToFile(blob, "my-image1.png");
+          const objectURL = URL.createObjectURL(blob);
+          const img = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+          
+          this.user.image = objectURL
+      })
+}
      })
     })
   }else{
@@ -145,8 +156,6 @@ login(){
    
    })
   }
-
-  this.ngOnInit();
 
 }
 }
