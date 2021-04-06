@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
 
           this.gs.saveToken(res.token);
           this.gs.setUser(res.user);
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/dashboard"]);
        }
        })
     });
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
 
           this.gs.saveToken(res.token);
           this.gs.setUser(res.user);
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/dashboard"]);
        }
        })
     });
